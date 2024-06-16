@@ -13,16 +13,12 @@
 
         body {
             font-family: 'Minecraft', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Выравнивание по центру по вертикали */
-            min-height: 100vh;
             margin: 0;
             background: linear-gradient(120deg, #1e1e1e, #2c2c2c, #1e1e1e);
             background-size: 200% 200%;
             animation: gradientAnimation 20s ease infinite;
             color: #fff;
-            flex-direction: column;
+            min-height: 100vh; /* Ensure full viewport height */
         }
 
         @keyframes gradientAnimation {
@@ -34,7 +30,7 @@
         .container {
             width: 100%;
             text-align: center;
-            margin-bottom: 2em;
+            padding: 2em 0; /* Adjusted padding */
         }
 
         h1 {
@@ -48,14 +44,8 @@
             font-weight: bold;
         }
 
-        p {
+        p, r {
             font-size: 1.2em;
-            color: #ccc;
-            font-family: 'Minecraft', Arial, sans-serif;
-        }
-
-        r {
-            font-size: 1.0em;
             color: #ccc;
             font-family: 'Minecraft', Arial, sans-serif;
         }
@@ -85,8 +75,10 @@
             background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 1em 0.5;
+            padding: 1em 0.5em;
             width: 100%;
+            position: fixed; /* Fix footer to bottom */
+            bottom: 0; /* Stick to the bottom */
         }
 
         footer a.creator {
