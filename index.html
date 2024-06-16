@@ -18,7 +18,10 @@
             background-size: 200% 200%;
             animation: gradientAnimation 20s ease infinite;
             color: #fff;
-            min-height: 100vh; /* Ensure full viewport height */
+            height: 100vh; /* Ensure full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         @keyframes gradientAnimation {
@@ -28,9 +31,8 @@
         }
 
         .container {
-            width: 100%;
             text-align: center;
-            padding: 2em 0; /* Adjusted padding */
+            padding: 2em 0;
         }
 
         h1 {
