@@ -128,12 +128,26 @@
             justify-content: center;
         }
 
+        .lightbox-content-wrapper {
+            position: relative;
+            width: 80%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .lightbox-content {
-            max-width: 80%;
-            max-height: 80vh;
+            max-width: none;
+            max-height: none;
             display: block;
-            cursor: zoom-in;
+            cursor: grab;
             transition: transform 0.25s ease;
+        }
+
+        .lightbox-content.zoomed {
+            cursor: zoom-out;
         }
 
         .lightbox-close {
@@ -201,7 +215,9 @@
 
         <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
             <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-            <img class="lightbox-content" id="lightbox-img" onclick="toggleZoom(event)">
+            <div class="lightbox-content-wrapper">
+                <img class="lightbox-content" id="lightbox-img" onmousedown="startPan(event)" onmouseup="stopPan()" onmousemove="panImage(event)" ontouchstart="startPan(event)" ontouchend="stopPan()" ontouchmove="panImage(event)">
+            </div>
         </div>
     </div>
 
@@ -210,9 +226,8 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('lightbox').style.display = 'none'; // Убедитесь, что lightbox скрыт при загрузке
-        });
+        let isPanning = false;
+        let startX, startY;
 
         function openLightbox(src) {
             const lightbox = document.getElementById('lightbox');
@@ -220,7 +235,7 @@
             lightbox.style.display = 'flex';
             lightboxImg.src = src;
             lightboxImg.style.transform = 'scale(1)'; // Сброс масштабирования
-            lightboxImg.style.cursor = 'zoom-in'; // Курсор для увеличения
+            lightboxImg.classList.remove('zoomed');
         }
 
         function closeLightbox(event) {
@@ -230,15 +245,35 @@
         }
 
         function toggleZoom(event) {
-            event.stopPropagation(); // Чтобы клик по изображению не закрывал lightbox
+            event.stopPropagation();
             const img = event.target;
-            if (img.style.transform === 'scale(2)') {
+            if (img.classList.contains('zoomed')) {
+                img.classList.remove('zoomed');
                 img.style.transform = 'scale(1)';
-                img.style.cursor = 'zoom-in';
             } else {
+                img.classList.add('zoomed');
                 img.style.transform = 'scale(2)';
-                img.style.cursor = 'zoom-out';
             }
+        }
+
+        function startPan(event) {
+            isPanning = true;
+            startX = event.clientX || event.touches[0].clientX;
+            startY = event.clientY || event.touches[0].clientY;
+        }
+
+        function stopPan() {
+            isPanning = false;
+        }
+
+        function panImage(event) {
+            if (!isPanning) return;
+            const img = document.getElementById('lightbox-img');
+            const x = (event.clientX || event.touches[0].clientX) - startX;
+            const y = (event.clientY || event.touches[0].clientY) - startY;
+            startX = event.clientX || event.touches[0].clientX;
+            startY = event.clientY || event.touches[0].clientY;
+            img.style.transform = `translate(${img.offsetLeft + x}px, ${img.offsetTop + y}px) scale(${parseFloat(img.style.transform.replace(/[^\d.]/g, '') || 1)})`;
         }
     </script>
 </body>
