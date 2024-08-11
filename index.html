@@ -56,39 +56,31 @@
 
         .buttons {
             margin-top: 1.5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .button {
-            padding: 0.5em 1em;
-            font-size: 1em;
-            background: none;
-            border: 2px solid #007aff;
-            color: #007aff;
+        .buttons i {
+            font-size: 3em;
+            color: #fff;
+            transition: color 0.3s;
             cursor: pointer;
-            margin: 0 0.5em;
-            transition: border-color 0.3s, color 0.3s;
-            font-family: 'Minecraft', Arial, sans-serif;
         }
 
-        .button:hover {
-            border-color: #005bb5;
-            color: #005bb5;
+        .buttons i:hover {
+            color: #007aff;
         }
 
         .gallery-wrapper {
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 2em 0;
-        }
-
-        .gallery {
-            display: inline-block;
+            padding: 2em;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+            justify-items: center;
         }
 
         .gallery-item {
-            display: inline-block;
-            width: 300px;
-            margin: 0 10px;
             position: relative;
             transition: transform 0.3s ease;
         }
@@ -167,25 +159,23 @@
     </div>
 
     <div class="gallery-wrapper">
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="image1.png" alt="Image 1" onclick="openLightbox(this.src)">
-            </div>
-            <div class="gallery-item">
-                <img src="image2.png" alt="Image 2" onclick="openLightbox(this.src)">
-            </div>
-            <div class="gallery-item">
-                <img src="image3.png" alt="Image 3" onclick="openLightbox(this.src)">
-            </div>
-            <div class="gallery-item">
-                <img src="image4.png" alt="Image 4" onclick="openLightbox(this.src)">
-            </div>
-            <div class="gallery-item">
-                <img src="image5.png" alt="Image 5" onclick="openLightbox(this.src)">
-            </div>
-            <div class="gallery-item">
-                <img src="image6.png" alt="Image 6" onclick="openLightbox(this.src)">
-            </div>
+        <div class="gallery-item">
+            <img src="image1.jpg" alt="Image 1" onclick="openLightbox(this.src)">
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Image 2" onclick="openLightbox(this.src)">
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Image 3" onclick="openLightbox(this.src)">
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Image 4" onclick="openLightbox(this.src)">
+        </div>
+        <div class="gallery-item">
+            <img src="image5.jpg" alt="Image 5" onclick="openLightbox(this.src)">
+        </div>
+        <div class="gallery-item">
+            <img src="image6.jpg" alt="Image 6" onclick="openLightbox(this.src)">
         </div>
     </div>
 
