@@ -11,9 +11,13 @@
             src: url('minecraft.ttf') format('truetype');
         }
 
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
             font-family: 'Minecraft', Arial, sans-serif;
-            margin: 0;
             background: linear-gradient(120deg, #1e1e1e, #2c2c2c, #1e1e1e);
             background-size: 200% 200%;
             animation: gradientAnimation 20s ease infinite;
@@ -22,8 +26,6 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            min-height: 100vh;
-            justify-content: center; /* Центрирование содержимого по вертикали */
             overflow: hidden;
         }
 
@@ -33,8 +35,17 @@
             100% { background-position: 0% 50%; }
         }
 
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
         .header {
-            margin-bottom: 40px; /* Отступ для пространства перед изображениями */
+            margin-bottom: 40px;
         }
 
         .header h1 {
@@ -79,7 +90,7 @@
             grid-gap: 20px;
             justify-items: center;
             max-width: 80%;
-            margin-bottom: 40px; /* Отступ снизу */
+            margin-bottom: 40px;
         }
 
         .gallery-item {
@@ -137,6 +148,8 @@
             text-align: center;
             padding: 1em 0.5em;
             width: 100%;
+            position: relative;
+            bottom: 0;
         }
 
         footer a.creator {
@@ -151,39 +164,41 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1><span class="highlight">IntelligentSquad</span> - Exploits</h1>
-        <p>All servers will be destroyed the second we arrive!</p>
-        <r>Collaboration - me@nlleer.guru</r>
-        <div class="buttons">
-            <a href="https://discord.gg/zz2PfSY3Na" target="_blank"><i class="fab fa-discord"></i></a>
+    <div class="content">
+        <div class="header">
+            <h1><span class="highlight">IntelligentSquad</span> - Exploits</h1>
+            <p>All servers will be destroyed the second we arrive!</p>
+            <r>Collaboration - me@nlleer.guru</r>
+            <div class="buttons">
+                <a href="https://discord.gg/zz2PfSY3Na" target="_blank"><i class="fab fa-discord"></i></a>
+            </div>
         </div>
-    </div>
 
-    <div class="gallery-wrapper">
-        <div class="gallery-item">
-            <img src="image1.png" alt="Image 1" onclick="openLightbox(this.src)">
+        <div class="gallery-wrapper">
+            <div class="gallery-item">
+                <img src="image1.png" alt="Image 1" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="image2.png" alt="Image 2" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="image3.png" alt="Image 3" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="image4.png" alt="Image 4" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="image5.png" alt="Image 5" onclick="openLightbox(this.src)">
+            </div>
+            <div class="gallery-item">
+                <img src="image6.png" alt="Image 6" onclick="openLightbox(this.src)">
+            </div>
         </div>
-        <div class="gallery-item">
-            <img src="image2.png" alt="Image 2" onclick="openLightbox(this.src)">
-        </div>
-        <div class="gallery-item">
-            <img src="image3.png" alt="Image 3" onclick="openLightbox(this.src)">
-        </div>
-        <div class="gallery-item">
-            <img src="image4.png" alt="Image 4" onclick="openLightbox(this.src)">
-        </div>
-        <div class="gallery-item">
-            <img src="image5.png" alt="Image 5" onclick="openLightbox(this.src)">
-        </div>
-        <div class="gallery-item">
-            <img src="image6.png" alt="Image 6" onclick="openLightbox(this.src)">
-        </div>
-    </div>
 
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+        </div>
     </div>
 
     <footer>
