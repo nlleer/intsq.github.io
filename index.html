@@ -23,6 +23,8 @@
             justify-content: space-between;
             min-height: 100vh;
             overflow-x: hidden;
+            align-items: center;
+            text-align: center;
         }
 
         @keyframes gradientAnimation {
@@ -35,6 +37,12 @@
             text-align: center;
             padding: 2em 0;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -75,7 +83,7 @@
         .gallery-wrapper {
             padding: 2em;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             grid-gap: 20px;
             justify-items: center;
         }
