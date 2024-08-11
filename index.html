@@ -114,7 +114,7 @@
         }
 
         .lightbox {
-            display: none;
+            display: none; /* Модальное окно скрыто при загрузке */
             position: fixed;
             z-index: 9999;
             left: 0;
@@ -132,8 +132,8 @@
             max-width: 80%;
             max-height: 80vh;
             display: block;
-            margin: auto;
-            cursor: zoom-out;
+            cursor: zoom-in; /* Изменить курсор для увеличения */
+            transition: transform 0.25s ease;
         }
 
         .lightbox-close {
@@ -200,8 +200,8 @@
         </div>
 
         <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-            <img class="lightbox-content" id="lightbox-img" onclick="toggleZoom(this)">
+            <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+            <img class="lightbox-content" id="lightbox-img" onclick="toggleZoom(event)">
         </div>
     </div>
 
@@ -215,11 +215,15 @@
             document.getElementById('lightbox-img').src = src;
         }
 
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
+        function closeLightbox(event) {
+            if (event.target === event.currentTarget) {
+                document.getElementById('lightbox').style.display = 'none';
+            }
         }
 
-        function toggleZoom(img) {
+        function toggleZoom(event) {
+            event.stopPropagation(); // Чтобы клик по изображению не закрывал lightbox
+            const img = event.target;
             if (img.style.transform === 'scale(1)') {
                 img.style.transform = 'scale(2)';
                 img.style.cursor = 'zoom-out';
