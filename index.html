@@ -23,7 +23,8 @@
             align-items: center;
             text-align: center;
             min-height: 100vh;
-            justify-content: center; /* Центрирование по вертикали */
+            justify-content: center; /* Центрирование содержимого по вертикали */
+            overflow: hidden;
         }
 
         @keyframes gradientAnimation {
@@ -33,7 +34,7 @@
         }
 
         .header {
-            margin-bottom: 30px; /* Отступ от изображений */
+            margin-bottom: 40px; /* Отступ для пространства перед изображениями */
         }
 
         .header h1 {
@@ -47,7 +48,7 @@
             font-weight: bold;
         }
 
-        .header p {
+        .header p, .header r {
             font-size: 1.2em;
             color: #ccc;
             font-family: 'Minecraft', Arial, sans-serif;
@@ -74,10 +75,11 @@
         .gallery-wrapper {
             padding: 2em 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             grid-gap: 20px;
             justify-items: center;
             max-width: 80%;
+            margin-bottom: 40px; /* Отступ снизу */
         }
 
         .gallery-item {
