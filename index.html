@@ -23,7 +23,7 @@
             align-items: center;
             text-align: center;
             min-height: 100vh;
-            justify-content: space-between;
+            justify-content: flex-start;
         }
 
         @keyframes gradientAnimation {
@@ -33,46 +33,42 @@
         }
 
         .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex-grow: 1;
-            padding: 20px;
+            margin-top: 50px;
+            text-align: center;
         }
 
-        h1 {
+        .header h1 {
             font-size: 2em;
             margin: 0.5em 0;
             font-family: 'Minecraft', Arial, sans-serif;
         }
 
-        .highlight {
+        .header .highlight {
             color: rgba(3, 252, 227);
             font-weight: bold;
         }
 
-        p, r {
+        .header p {
             font-size: 1.2em;
             color: #ccc;
             font-family: 'Minecraft', Arial, sans-serif;
         }
 
-        .buttons {
+        .header .buttons {
             margin-top: 1em;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .buttons i {
+        .header .buttons i {
             font-size: 2em;
             color: #fff;
             transition: color 0.3s;
             cursor: pointer;
         }
 
-        .buttons i:hover {
+        .header .buttons i:hover {
             color: #007aff;
         }
 
